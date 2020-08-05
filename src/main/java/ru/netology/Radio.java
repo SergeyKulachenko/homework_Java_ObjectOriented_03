@@ -27,13 +27,21 @@ public class Radio {
         return currentSoundVolume;
     }
 
-    public void NumberStationNext() {
-        if (enteredNumberStation != 10) {
-            currentNumberStation = enteredNumberStation;
-            this.currentNumberStation = currentNumberStation;
+    public void NumberStationEntered() {
+        if (enteredNumberStation > 9) {
+            this.currentNumberStation=9;
             return;
         }
-        if (currentNumberStation == 9) currentNumberStation = -1;
+        this.currentNumberStation = enteredNumberStation;
+        return;
+
+    }
+
+    public void NumberStationNext() {
+        if (currentNumberStation == 9){
+            this.currentNumberStation=0;
+            return;
+        }
         currentNumberStation++;
         this.currentNumberStation = currentNumberStation;
         return;

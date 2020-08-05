@@ -8,16 +8,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
     @ParameterizedTest
     @CsvSource({
-            "NumberStationEnter,2,6,6",
-            "NumberStationFrom_0Forward,0,10,1",
-            "NumberStationFrom_5Forward,5,10,6",
-            "NumberStationFrom_9Forward,9,10,0",
+            "NumberStationEnter,6,6",
+            "NumberStationEnter,9,9",
+            "NumberStationEnter,15,9"
     })
-    public void NumberStationNext(String name, int currentNumberStation,
-                                  int enteredNumberStation, int expected) {
+    public void NumberStationEntered(String name, int enteredNumberStation, int expected) {
+        Radio station = new Radio();
+        station.setEnteredNumberStation(enteredNumberStation);
+        station.NumberStationEntered();
+        int actual = station.getCurrentNumberStation();
+        assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "NumberStationFrom_0Forward,0,1",
+            "NumberStationFrom_5Forward,5,6",
+            "NumberStationFrom_9Forward,9,0",
+    })
+    public void NumberStationNext(String name, int currentNumberStation, int expected) {
         Radio station = new Radio();
         station.setCurrentNumberStation(currentNumberStation);
-        station.setEnteredNumberStation(enteredNumberStation);
         station.NumberStationNext();
         int actual = station.getCurrentNumberStation();
         assertEquals(expected, actual);
