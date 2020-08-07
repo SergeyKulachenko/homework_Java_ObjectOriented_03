@@ -7,10 +7,6 @@ public class Radio {
     private int enteredNumberStation;
     private int currentSoundVolume;
 
-    public void setEnteredNumberStation(int enteredNumberStation) {
-        this.enteredNumberStation = enteredNumberStation;
-    }
-
     public void setCurrentNumberStation(int currentNumberStation) {
         this.currentNumberStation = currentNumberStation;
     }
@@ -27,30 +23,18 @@ public class Radio {
         return currentSoundVolume;
     }
 
-    public void NumberStationEntered() {
-        if (enteredNumberStation > 9) {
-            this.currentNumberStation=9;
+    public void NumberStationNext(int currentNumStation) {
+        if (currentNumStation == 9) {
+            currentNumberStation = 0;
             return;
         }
-        this.currentNumberStation = enteredNumberStation;
-        return;
-
-    }
-
-    public void NumberStationNext() {
-        if (currentNumberStation == 9){
-            this.currentNumberStation=0;
-            return;
-        }
-        currentNumberStation++;
-        this.currentNumberStation = currentNumberStation;
+        currentNumberStation = currentNumStation + 1;
         return;
     }
 
     public void NumberStationPrev() {
         if (currentNumberStation == 0) currentNumberStation = 10;
         currentNumberStation--;
-        this.currentNumberStation = currentNumberStation;
         return;
     }
 

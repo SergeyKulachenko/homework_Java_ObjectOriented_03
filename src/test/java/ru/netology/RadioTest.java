@@ -1,21 +1,19 @@
 package ru.netology;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    @ParameterizedTest
-    @CsvSource({
-            "NumberStationEnter,6,6",
-            "NumberStationEnter,9,9",
-            "NumberStationEnter,15,9"
-    })
-    public void NumberStationEntered(String name, int enteredNumberStation, int expected) {
+
+    @Test
+    public void NumberStationEntered() {
+        int enteredNumberStation = 7;
+        int expected = 7;
         Radio station = new Radio();
-        station.setEnteredNumberStation(enteredNumberStation);
-        station.NumberStationEntered();
+        station.setCurrentNumberStation(enteredNumberStation);
         int actual = station.getCurrentNumberStation();
         assertEquals(expected, actual);
     }
@@ -26,10 +24,9 @@ class RadioTest {
             "NumberStationFrom_5Forward,5,6",
             "NumberStationFrom_9Forward,9,0",
     })
-    public void NumberStationNext(String name, int currentNumberStation, int expected) {
+    public void NumberStationNext(String name, int currentNumberS, int expected) {
         Radio station = new Radio();
-        station.setCurrentNumberStation(currentNumberStation);
-        station.NumberStationNext();
+        station.NumberStationNext(currentNumberS);
         int actual = station.getCurrentNumberStation();
         assertEquals(expected, actual);
     }
