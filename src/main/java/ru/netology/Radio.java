@@ -23,22 +23,21 @@ public class Radio {
         return currentSoundVolume;
     }
 
-    public void NumberStationNext(int currentNumStation) {
-        if (currentNumStation == 9) {
-            currentNumberStation = 0;
-            return;
-        }
-        currentNumberStation = currentNumStation + 1;
+    public void numberStationNext() {
+        if (currentNumberStation == 9) {
+            this.currentNumberStation = 0;
+            return;}
+        currentNumberStation++;
         return;
     }
 
-    public void NumberStationPrev() {
+    public void numberStationPrev() {
         if (currentNumberStation == 0) currentNumberStation = 10;
         currentNumberStation--;
         return;
     }
 
-    public void VolumeStationUp() {
+    public void volumeStationUp() {
         if (currentSoundVolume >= 10) {
             currentSoundVolume = 10;
             return;
@@ -49,7 +48,7 @@ public class Radio {
 
     }
 
-    public void VolumeStationDoun() {
+    public void volumeStationDoun() {
         if (currentSoundVolume <= 0) {
             currentSoundVolume = 0;
             return;

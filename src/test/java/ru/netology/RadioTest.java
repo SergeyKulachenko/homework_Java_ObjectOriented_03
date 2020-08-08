@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
-    public void NumberStationEntered() {
+    public void numberStationEntered() {
         int enteredNumberStation = 7;
         int expected = 7;
         Radio station = new Radio();
@@ -24,9 +24,10 @@ class RadioTest {
             "NumberStationFrom_5Forward,5,6",
             "NumberStationFrom_9Forward,9,0",
     })
-    public void NumberStationNext(String name, int currentNumberS, int expected) {
+    public void numberStationNext(String name, int currentNumberStation, int expected) {
         Radio station = new Radio();
-        station.NumberStationNext(currentNumberS);
+        station.setCurrentNumberStation(currentNumberStation);
+        station.numberStationNext();
         int actual = station.getCurrentNumberStation();
         assertEquals(expected, actual);
     }
@@ -37,10 +38,10 @@ class RadioTest {
             "NumberStationFrom_5Forward,5,4",
             "NumberStationFrom_9Forward,9,8"
     })
-    public void NumberStationPrev(String name, int currentNumberStation, int expected) {
+    public void numberStationPrev(String name, int currentNumberStation, int expected) {
         Radio station = new Radio();
         station.setCurrentNumberStation(currentNumberStation);
-        station.NumberStationPrev();
+        station.numberStationPrev();
         int actual = station.getCurrentNumberStation();
         assertEquals(expected, actual);
     }
@@ -52,10 +53,10 @@ class RadioTest {
             "volumeUpFrom_max,10,10"
 
     })
-    public void VolumeStationUp(String name, int currentSoundVolume, int expected) {
+    public void volumeStationUp(String name, int currentSoundVolume, int expected) {
         Radio station = new Radio();
         station.setCurrentSoundVolume(currentSoundVolume);
-        station.VolumeStationUp();
+        station.volumeStationUp();
         int actual = station.getCurrentSoundVolume();
         assertEquals(expected, actual);
     }
@@ -66,10 +67,10 @@ class RadioTest {
             "volumeDownFrom_6,6,5",
             "volumeDownFrom_min,0,0"
     })
-    public void VolumeStationDoun(String name, int currentSoundVolume, int expected) {
+    public void volumeStationDoun(String name, int currentSoundVolume, int expected) {
         Radio station = new Radio();
         station.setCurrentSoundVolume(currentSoundVolume);
-        station.VolumeStationDoun();
+        station.volumeStationDoun();
         int actual = station.getCurrentSoundVolume();
         assertEquals(expected, actual);
     }
