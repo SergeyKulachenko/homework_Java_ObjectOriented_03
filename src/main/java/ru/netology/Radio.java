@@ -1,7 +1,14 @@
 package ru.netology;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.security.PrivateKey;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Radio {
     private int minNumberStation = 0;
     private int maxNumberStation = 9;
@@ -10,27 +17,12 @@ public class Radio {
     private int currentNumberStation = 5;
     private int currentSoundVolume = 50;
 
-    public void setCurrentNumberStation(int currentNumberStation) {
-        this.currentNumberStation = currentNumberStation;
-    }
-
-    public int getCurrentNumberStation() {
-        return currentNumberStation;
-    }
-
-    public void setCurrentSoundVolume(int currentSoundVolume) {
-        this.currentSoundVolume = currentSoundVolume;
-    }
-
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
-    }
-
-    public void numberStationNext() {
+    public Radio(int currentNumberStation) {
         if (currentNumberStation == maxNumberStation) {
             this.currentNumberStation = minNumberStation;
             return;}
         currentNumberStation++;
+        this.currentNumberStation = currentNumberStation;
         return;
     }
 

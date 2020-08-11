@@ -18,6 +18,8 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
+    Radio station = new Radio();
+
     @ParameterizedTest
     @CsvSource({
             "NumberStationFrom_0Forward,0,1",
@@ -25,12 +27,27 @@ class RadioTest {
             "NumberStationFrom_9Forward,9,0",
     })
     public void numberStationNext(String name, int currentNumberStation, int expected) {
-        Radio station = new Radio();
-        station.setCurrentNumberStation(currentNumberStation);
-        station.numberStationNext();
-        int actual = station.getCurrentNumberStation();
+        Radio radio = new Radio(
+                currentNumberStation
+        );
+        int actual = radio.getCurrentNumberStation();
         assertEquals(expected, actual);
     }
+
+    // ПРОСТО ЭКСПЕРЕМЕНТ
+    Radio radTest = new Radio();
+    Radio radioTest = new Radio();
+    @Test
+    public void test1() {
+        radioTest.setCurrentNumberStation(888);
+        Radio radio = new Radio(63);
+        System.out.println(radio.getCurrentNumberStation());
+        System.out.println(radTest.getCurrentNumberStation());
+        System.out.println(radioTest.getCurrentNumberStation());
+    }
+    //Почему выводятся разные значения? Казалось бы конструктор Radio присваивает новое значение,
+    // а при получении значения из поля через radTest получаем значение по умолчанию? Почему
+    // новые значения полей не сохраняются в текущей сессии? P.S дописал Radio radioTest = new Radio();
 
     @ParameterizedTest
     @CsvSource({
