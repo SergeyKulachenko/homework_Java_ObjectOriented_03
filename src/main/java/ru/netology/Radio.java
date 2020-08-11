@@ -1,45 +1,40 @@
 package ru.netology;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.security.PrivateKey;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Radio {
-    private int currentNumberStation;
-    private int enteredNumberStation;
-    private int currentSoundVolume;
+    private int minNumberStation = 0;
+    private int maxNumberStation = 9;
+    private int minSoundVolume = 0;
+    private int maxSoundVolume = 100;
+    private int currentNumberStation = 5;
+    private int currentSoundVolume = 50;
 
-    public void setCurrentNumberStation(int currentNumberStation) {
-        this.currentNumberStation = currentNumberStation;
-    }
-
-    public int getCurrentNumberStation() {
-        return currentNumberStation;
-    }
-
-    public void setCurrentSoundVolume(int currentSoundVolume) {
-        this.currentSoundVolume = currentSoundVolume;
-    }
-
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
-    }
-
-    public void numberStationNext() {
-        if (currentNumberStation == 9) {
-            this.currentNumberStation = 0;
+    public Radio(int currentNumberStation) {
+        if (currentNumberStation == maxNumberStation) {
+            this.currentNumberStation = minNumberStation;
             return;}
         currentNumberStation++;
+        this.currentNumberStation = currentNumberStation;
         return;
     }
 
     public void numberStationPrev() {
-        if (currentNumberStation == 0) currentNumberStation = 10;
+        if (currentNumberStation == minNumberStation) currentNumberStation = maxNumberStation+1;
         currentNumberStation--;
         return;
     }
 
     public void volumeStationUp() {
-        if (currentSoundVolume >= 10) {
-            currentSoundVolume = 10;
+        if (currentSoundVolume >= maxSoundVolume) {
+            currentSoundVolume = maxSoundVolume;
             return;
         } else {
             currentSoundVolume++;
@@ -49,8 +44,8 @@ public class Radio {
     }
 
     public void volumeStationDoun() {
-        if (currentSoundVolume <= 0) {
-            currentSoundVolume = 0;
+        if (currentSoundVolume <= minSoundVolume) {
+            currentSoundVolume = minSoundVolume;
             return;
         } else {
             currentSoundVolume--;
