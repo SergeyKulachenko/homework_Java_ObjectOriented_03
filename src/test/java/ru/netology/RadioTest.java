@@ -32,25 +32,25 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-//    @ParameterizedTest
-//    @CsvSource({
-//            "NumberStationFrom_0Forward,0,9",
-//            "NumberStationFrom_5Forward,5,4",
-//            "NumberStationFrom_9Forward,9,8"
-//    })
-////    public void numberStationPrev(String name, int currentNumberStation, int expected) {
-//        Radio station = new Radio();
-//        station.setCurrentNumberStation(currentNumberStation);
-//        station.numberStationPrev();
-//        int actual = station.getCurrentNumberStation();
-//        assertEquals(expected, actual);
-//    }
+    @ParameterizedTest
+    @CsvSource({
+            "NumberStationFrom_0Forward,0,9",
+            "NumberStationFrom_5Forward,5,4",
+            "NumberStationFrom_9Forward,9,8"
+    })
+    public void numberStationPrev(String name, int currentNumberStation, int expected) {
+        Radio station = new Radio();
+        station.setCurrentNumberStation(currentNumberStation);
+        station.numberStationPrev();
+        int actual = station.getCurrentNumberStation();
+        assertEquals(expected, actual);
+    }
 
     @ParameterizedTest
     @CsvSource({
             "volumeUpFrom_0,0,1",
-            "volumeUpFrom_5,5,6",
-            "volumeUpFrom_max,10,10"
+            "volumeUpFrom_5,65,66",
+            "volumeUpFrom_max,100,100"
 
     })
     public void volumeStationUp(String name, int currentSoundVolume, int expected) {
@@ -63,8 +63,8 @@ class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
-            "volumeDownFrom_10,10,9",
-            "volumeDownFrom_6,6,5",
+            "volumeDownFrom_100,100,99",
+            "volumeDownFrom_60,60,59",
             "volumeDownFrom_min,0,0"
     })
     public void volumeStationDoun(String name, int currentSoundVolume, int expected) {

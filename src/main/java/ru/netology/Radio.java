@@ -3,9 +3,12 @@ package ru.netology;
 import java.security.PrivateKey;
 
 public class Radio {
-    private int currentNumberStation;
-    private int enteredNumberStation;
-    private int currentSoundVolume;
+    private int minNumberStation = 0;
+    private int maxNumberStation = 9;
+    private int minSoundVolume = 0;
+    private int maxSoundVolume = 100;
+    private int currentNumberStation = 5;
+    private int currentSoundVolume = 50;
 
     public void setCurrentNumberStation(int currentNumberStation) {
         this.currentNumberStation = currentNumberStation;
@@ -24,22 +27,22 @@ public class Radio {
     }
 
     public void numberStationNext() {
-        if (currentNumberStation == 9) {
-            this.currentNumberStation = 0;
+        if (currentNumberStation == maxNumberStation) {
+            this.currentNumberStation = minNumberStation;
             return;}
         currentNumberStation++;
         return;
     }
 
     public void numberStationPrev() {
-        if (currentNumberStation == 0) currentNumberStation = 10;
+        if (currentNumberStation == minNumberStation) currentNumberStation = maxNumberStation+1;
         currentNumberStation--;
         return;
     }
 
     public void volumeStationUp() {
-        if (currentSoundVolume >= 10) {
-            currentSoundVolume = 10;
+        if (currentSoundVolume >= maxSoundVolume) {
+            currentSoundVolume = maxSoundVolume;
             return;
         } else {
             currentSoundVolume++;
@@ -49,8 +52,8 @@ public class Radio {
     }
 
     public void volumeStationDoun() {
-        if (currentSoundVolume <= 0) {
-            currentSoundVolume = 0;
+        if (currentSoundVolume <= minSoundVolume) {
+            currentSoundVolume = minSoundVolume;
             return;
         } else {
             currentSoundVolume--;
