@@ -32,19 +32,19 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "NumberStationFrom_0Forward,0,9",
-            "NumberStationFrom_5Forward,5,4",
-            "NumberStationFrom_9Forward,9,8"
-    })
-    public void numberStationPrev(String name, int currentNumberStation, int expected) {
-        Radio station = new Radio();
-        station.setCurrentNumberStation(currentNumberStation);
-        station.numberStationPrev();
-        int actual = station.getCurrentNumberStation();
-        assertEquals(expected, actual);
-    }
+//    @ParameterizedTest
+//    @CsvSource({
+//            "NumberStationFrom_0Forward,0,9",
+//            "NumberStationFrom_5Forward,5,4",
+//            "NumberStationFrom_9Forward,9,8"
+//    })
+////    public void numberStationPrev(String name, int currentNumberStation, int expected) {
+//        Radio station = new Radio();
+//        station.setCurrentNumberStation(currentNumberStation);
+//        station.numberStationPrev();
+//        int actual = station.getCurrentNumberStation();
+//        assertEquals(expected, actual);
+//    }
 
     @ParameterizedTest
     @CsvSource({
