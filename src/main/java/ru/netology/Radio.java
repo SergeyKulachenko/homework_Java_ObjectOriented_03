@@ -26,16 +26,28 @@ public class Radio {
         return currentSoundVolume;
     }
 
+    public int getMaxNumberStation() {
+        return maxNumberStation;
+    }
+
+    public Radio(int maxNumberStation) {
+        this.maxNumberStation = maxNumberStation;
+    }
+
     public void numberStationNext() {
         if (currentNumberStation == maxNumberStation) {
             this.currentNumberStation = minNumberStation;
-            return;}
+            return;
+        }
         currentNumberStation++;
         return;
     }
 
     public void numberStationPrev() {
-        if (currentNumberStation == minNumberStation) currentNumberStation = maxNumberStation+1;
+        if (currentNumberStation == minNumberStation) {
+            currentNumberStation = maxNumberStation + 1;
+        }
+        ;
         currentNumberStation--;
         return;
     }
@@ -60,5 +72,7 @@ public class Radio {
             return;
         }
     }
+
+
 }
 
