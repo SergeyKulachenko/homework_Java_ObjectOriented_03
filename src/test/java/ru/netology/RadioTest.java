@@ -23,10 +23,13 @@ class RadioTest {
     @CsvSource({
             "NumberStationEnter,0,0",
             "NumberStationEnter,6,6",
-            "NumberStationEnter,9,9"
+            "NumberStationEnter,9,9",
+            "NumberStationEnter,-1,0",
+            "NumberStationEnter,10,9"
     })
     public void numberStationEntered(String name, int enteredNumberStation, int expected) {
         station.setCurrentNumberStation(enteredNumberStation);
+        station.NumberStationEntered();
         int actual = station.getCurrentNumberStation();
         assertEquals(expected, actual);
     }
