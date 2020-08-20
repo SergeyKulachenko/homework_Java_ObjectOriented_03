@@ -29,7 +29,7 @@ class RadioTest {
     })
     public void numberStationEntered(String name, int enteredNumberStation, int expected) {
         station.setCurrentNumberStation(enteredNumberStation);
-        station.NumberStationEntered();
+        station.numberStationEntered(enteredNumberStation);
         int actual = station.getCurrentNumberStation();
         assertEquals(expected, actual);
     }

@@ -35,7 +35,7 @@ public class Radio {
         this.maxNumberStation = maxNumberStation;
     }
 
-    public void NumberStationEntered() {
+    public void numberStationEntered(int currentNumberStation) {
         if (currentNumberStation >= maxNumberStation) {
             this.currentNumberStation = maxNumberStation;
             return;
@@ -44,6 +44,7 @@ public class Radio {
             this.currentNumberStation = minNumberStation;
             return;
         }
+        this.currentNumberStation=currentNumberStation;
     }
 
     public void numberStationNext() {
@@ -83,7 +84,6 @@ public class Radio {
             return;
         }
     }
-
 
 }
 
